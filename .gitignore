@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+out/
+tracks/
+*.wav
+*.mp3
+*.flac
+.env
+.idea/
+.DS_Store

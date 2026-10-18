@@ -1,0 +1,50 @@
+[project]
+name = "neurojockey"
+version = "0.1.0"
+description = "Offline AI DJ: track analysis, stem separation, automatic beatmatched mixing"
+readme = "README.md"
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Almaz Mutigullin", email = "a@mtgln.ru" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "beat-this",
+    "demucs>=4.0.1",
+    "einops>=0.8.2",
+    "librosa>=1.0.0",
+    "numpy>=2.5.3",
+    "pedalboard>=0.9.25",
+    "pyloudnorm>=0.2.0",
+    "rich>=15.0.0",
+    "rotary-embedding-torch>=0.9.1",
+    "scipy>=1.18.1",
+    "soundfile>=0.14.0",
+    "soxr>=1.1.0",
+    "torch>=2.4,<2.9",
+    "torchaudio>=2.4,<2.9",
+    "typer>=0.27.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/ShuffleBoy/NeuroJockey"
+Repository = "https://github.com/ShuffleBoy/NeuroJockey"
+Issues = "https://github.com/ShuffleBoy/NeuroJockey/issues"
+
+[project.scripts]
+neurojockey = "neurojockey.cli:app"
+nj = "neurojockey.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+beat-this = { url = "https://github.com/CPJKU/beat_this/archive/main.zip" }
+
+[dependency-groups]
+dev = [
+    "matplotlib>=3.11.2",
+    "pytest>=9.1.1",
+]

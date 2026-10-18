@@ -1,0 +1,21 @@
+name: tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          enable-cache: true
+      - run: sudo apt-get update && sudo apt-get install -y libsndfile1 libatomic1 ffmpeg
+      # the locked versions, but CPU-only torch wheels: no GPU on the runner, and CUDA ones are gigabytes
+      - run: uv venv --python 3.12
+      - run: uv export --frozen --no-hashes | grep -vE '^(nvidia-|triton)' > requirements.txt
+      - run: uv pip install -r requirements.txt --torch-backend cpu
+      - run: uv run --no-sync pytest -q
