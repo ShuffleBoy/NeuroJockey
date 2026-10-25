@@ -1,6 +1,6 @@
 [project]
 name = "neurojockey"
-version = "0.1.0"
+version = "0.2.0"
 description = "Offline AI DJ: track analysis, stem separation, automatic beatmatched mixing"
 readme = "README.md"
 license = "GPL-3.0-only"
